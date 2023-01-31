@@ -3,12 +3,23 @@ import { ChainId, ThirdwebProvider } from "@thirdweb-dev/react";
 import "../styles/globals.css";
 import Head from "next/head";
 import ThirdwebGuideFooter from "../components/GitHubLink";
+import dynamic from 'next/dynamic'
 
 // This is the chainId your dApp will work on.
 const activeChainId = ChainId.Avalanche;
 
+const PangolinProvider = dynamic(
+  () => import('@pangolindex/components').then((module) => module.PangolinProvider),
+  { ssr: false },
+) 
+
 function MyApp({ Component, pageProps }: AppProps) {
   return (
+    <PangolinProvider
+      library={undefined}
+      chainId={43114}
+      account="0xFe139eA54b6a025314a813338d909F9B63fF71A9"
+    >
     <ThirdwebProvider desiredChainId={activeChainId}>
       <Head>
         <title>thirdweb NFT Drop Minting Customizable Page</title>
@@ -25,6 +36,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Component {...pageProps} />
       <ThirdwebGuideFooter />
     </ThirdwebProvider>
+    </PangolinProvider>
   );
 }
 

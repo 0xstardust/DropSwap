@@ -15,6 +15,14 @@ import type { NextPage } from "next";
 import { useMemo, useState } from "react";
 import styles from "../styles/Theme.module.css";
 import { parseIneligibility } from "../utils/parseIneligibility";
+import dynamic from 'next/dynamic'
+
+const SwapWidget = dynamic(
+  () => import('@pangolindex/components').then((module) => module.SwapWidget),
+  {
+    ssr: false
+  }
+)
 
 // Put Your NFT Drop Contract address from the dashboard here
 const myNftDropContractAddress = "0xC08be0955AB0Dc85a073Ede89DE93Ef647fb7CB7";
@@ -311,17 +319,16 @@ const Home: NextPage = () => {
                 </>
               )}
             </div>
-          </>
+            </>
         )}
       </div>
-      {/* Powered by thirdweb */}{" "}
-      <img
-        src="/logo.png"
-        alt="thirdweb Logo"
-        width={135}
-        className={styles.buttonGapTop}
-      />
-    </div>
+      
+      <div className={styles.swapContainer}>
+        <SwapWidget />
+      </div>
+          
+      </div>
+    
   );
 };
 

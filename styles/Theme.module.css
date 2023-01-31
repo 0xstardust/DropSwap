@@ -144,6 +144,15 @@
   margin-top: 24px;
 }
 
+.swapContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
 .textInput {
   width: 48px;
   background-color: transparent;
@@ -157,12 +166,12 @@
 
 .quantityControlButton {
   cursor: pointer;
-  width: 42px;
-  height: 42px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   font-size: 2rem;
   background-color: transparent;
-  border: 1px solid grey;
+  border: 3px solid #FFC000;
   color: #fff;
 }
 
